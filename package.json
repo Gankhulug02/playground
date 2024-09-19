@@ -3,11 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "web:build": "turbo build --filter=./apps/web",
     "dev": "turbo dev",
+    "web:dev": "dotenv -- turbo dev --filter=./apps/web",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "dotenv-cli": "^7.4.2",
     "prettier": "^3.2.5",
     "turbo": "^2.0.14",
     "typescript": "^5.4.5"
@@ -15,9 +18,26 @@
   "engines": {
     "node": ">=18"
   },
+  "lint-staged": {
+    "apps/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "packages/ui/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
   "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "js-cookie": "^3.0.5",
+    "react-loading-skeleton": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  }
 }

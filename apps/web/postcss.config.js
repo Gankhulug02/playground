@@ -1,1 +1,1 @@
-module.exports = require('@playground/configs/tailwind/postcss.config');
+module.exports = require('@repo/ui/postcss.config');

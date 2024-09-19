@@ -1,15 +1,12 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-// import './globals.css';
+import { Roboto } from 'next/font/google';
 import '@repo/ui/global.css';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  display: 'swap',
+  style: 'normal',
 });
 
 export const metadata: Metadata = {
@@ -24,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      <body className={`${roboto.className}`}>{children}</body>
     </html>
   );
 }
